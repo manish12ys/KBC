@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KBC Quiz App - Kaun Banega Crorepati</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Welcome Screen -->
+    <div id="welcomeScreen" class="screen active">
+        <div class="welcome-container">
+            <div class="logo">
+                <h1><i class="fas fa-trophy"></i> KBC</h1>
+                <p>Kaun Banega Crorepati</p>
+            </div>
+            <div class="welcome-content">
+                <h2>Welcome to the Quiz!</h2>
+                <p>Answer 15 questions correctly to win ₹1 Crore!</p>
+                <div class="rules">
+                    <h3>Rules:</h3>
+                    <ul>
+                        <li>15 questions with increasing difficulty</li>
+                        <li>4 options for each question</li>
+                        <li>3 lifelines: 50-50, Phone a Friend, Ask the Audience</li>
+                        <li>Wrong answer ends the game</li>
+                        <li>You can quit anytime and take your winnings</li>
+                    </ul>
+                </div>
+                <button id="startGame" class="start-btn">
+                    <i class="fas fa-play"></i> Start Game
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="gameScreen" class="screen">
+        <div class="game-container">
+            <!-- Header -->
+            <div class="game-header">
+                <div class="question-info">
+                    <span id="questionNumber">Question 1 of 15</span>
+                    <span id="currentPrize">₹1,000</span>
+                </div>
+                <div class="lifelines">
+                    <button id="fiftyFifty" class="lifeline-btn" title="50-50">
+                        <i class="fas fa-balance-scale"></i>
+                        <span>50:50</span>
+                    </button>
+                    <button id="phoneAFriend" class="lifeline-btn" title="Phone a Friend">
+                        <i class="fas fa-phone"></i>
+                        <span>Phone</span>
+                    </button>
+                    <button id="askAudience" class="lifeline-btn" title="Ask the Audience">
+                        <i class="fas fa-users"></i>
+                        <span>Audience</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question Section -->
+            <div class="question-section">
+                <div class="question-container">
+                    <h2 id="questionText">Loading question...</h2>
+                </div>
+            </div>
+
+            <!-- Options Section -->
+            <div class="options-section">
+                <div class="options-grid">
+                    <button class="option-btn" data-option="A">
+                        <span class="option-label">A:</span>
+                        <span class="option-text">Option A</span>
+                    </button>
+                    <button class="option-btn" data-option="B">
+                        <span class="option-label">B:</span>
+                        <span class="option-text">Option B</span>
+                    </button>
+                    <button class="option-btn" data-option="C">
+                        <span class="option-label">C:</span>
+                        <span class="option-text">Option C</span>
+                    </button>
+                    <button class="option-btn" data-option="D">
+                        <span class="option-label">D:</span>
+                        <span class="option-text">Option D</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button id="quitGame" class="action-btn quit-btn">
+                    <i class="fas fa-sign-out-alt"></i> Quit Game
+                </button>
+                <button id="finalAnswer" class="action-btn final-btn" disabled>
+                    <i class="fas fa-check"></i> Final Answer
+                </button>
+            </div>
+        </div>
+
+        <!-- Prize Ladder -->
+        <div class="prize-ladder">
+            <h3>Prize Money</h3>
+            <div class="ladder-container">
+                <div class="prize-item" data-level="15">₹1,00,00,000</div>
+                <div class="prize-item" data-level="14">₹50,00,000</div>
+                <div class="prize-item" data-level="13">₹25,00,000</div>
+                <div class="prize-item" data-level="12">₹12,50,000</div>
+                <div class="prize-item" data-level="11">₹6,25,000</div>
+                <div class="prize-item safe" data-level="10">₹3,20,000</div>
+                <div class="prize-item" data-level="9">₹1,60,000</div>
+                <div class="prize-item" data-level="8">₹80,000</div>
+                <div class="prize-item" data-level="7">₹40,000</div>
+                <div class="prize-item" data-level="6">₹20,000</div>
+                <div class="prize-item safe" data-level="5">₹10,000</div>
+                <div class="prize-item" data-level="4">₹5,000</div>
+                <div class="prize-item" data-level="3">₹3,000</div>
+                <div class="prize-item" data-level="2">₹2,000</div>
+                <div class="prize-item current" data-level="1">₹1,000</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="resultScreen" class="screen">
+        <div class="result-container">
+            <div class="result-content">
+                <div id="resultIcon" class="result-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h2 id="resultTitle">Congratulations!</h2>
+                <p id="resultMessage">You won ₹1,00,00,000!</p>
+                <div class="result-stats">
+                    <div class="stat">
+                        <span class="stat-label">Questions Answered:</span>
+                        <span id="questionsAnswered">15/15</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Final Prize:</span>
+                        <span id="finalPrize">₹1,00,00,000</span>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <button id="playAgain" class="result-btn">
+                        <i class="fas fa-redo"></i> Play Again
+                    </button>
+                    <button id="shareResult" class="result-btn share-btn">
+                        <i class="fas fa-share"></i> Share Result
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lifeline Modals -->
+    <div id="phoneModal" class="modal">
+        <div class="modal-content">
+            <h3><i class="fas fa-phone"></i> Phone a Friend</h3>
+            <div class="friend-advice">
+                <p id="friendAdvice">Your friend thinks the answer might be...</p>
+            </div>
+            <button class="modal-close">Close</button>
+        </div>
+    </div>
+
+    <div id="audienceModal" class="modal">
+        <div class="modal-content">
+            <h3><i class="fas fa-users"></i> Ask the Audience</h3>
+            <div class="audience-poll">
+                <div class="poll-results">
+                    <div class="poll-bar" data-option="A">
+                        <span class="poll-label">A</span>
+                        <div class="poll-fill"></div>
+                        <span class="poll-percentage">25%</span>
+                    </div>
+                    <div class="poll-bar" data-option="B">
+                        <span class="poll-label">B</span>
+                        <div class="poll-fill"></div>
+                        <span class="poll-percentage">35%</span>
+                    </div>
+                    <div class="poll-bar" data-option="C">
+                        <span class="poll-label">C</span>
+                        <div class="poll-fill"></div>
+                        <span class="poll-percentage">15%</span>
+                    </div>
+                    <div class="poll-bar" data-option="D">
+                        <span class="poll-label">D</span>
+                        <div class="poll-fill"></div>
+                        <span class="poll-percentage">25%</span>
+                    </div>
+                </div>
+            </div>
+            <button class="modal-close">Close</button>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
